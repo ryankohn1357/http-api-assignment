@@ -10,7 +10,7 @@ const success = (request, response, acceptedType) => {
   const content = {
     message: 'This is a successful response',
   };
-  
+
   // return response in requested format
   if (acceptedType === 'text/xml') {
     let responseXML = '<response>';
@@ -28,7 +28,8 @@ const badRequest = (request, response, params, acceptedType) => {
     message: 'This request has the required parameters',
   };
 
-  // make sure valid exists as a parameter and check its value - if it's not true, the response will be a failure
+  // make sure valid exists as a parameter and check its value
+  // - if it's not true, the response will be a failure
   if (!params.valid || params.valid !== 'true') {
     content.message = 'Missing valid query parameter set to true';
     content.id = 'badRequest';
@@ -76,8 +77,9 @@ const unauthorized = (request, response, params, acceptedType) => {
     message: 'You have successfully viewd the content.',
   };
 
-  // make sure loggedIn exists as a parameter and check its value - if it's not yes, the response will be a failure
-  if (!params.loggedIn || params.loggedIn !== 'yes') { 
+  // make sure loggedIn exists as a parameter and check its value
+  // - if it's not yes, the response will be a failure
+  if (!params.loggedIn || params.loggedIn !== 'yes') {
     content.message = 'Missing loggedIn query parameter set to yes';
     content.id = 'unauthorized';
   }
